@@ -8,7 +8,7 @@ OBJ_DIR		= obj/
 INC_DIR		= include/
 		
 
-INCLUDE = 
+INCLUDE = I include
 
 SRC_FILES	= main\
 			  Fixed
