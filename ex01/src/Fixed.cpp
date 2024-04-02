@@ -1,9 +1,9 @@
-#include "Fixed.hpp" 
+#include "../include/Fixed.hpp" 
 
 Fixed::Fixed(void)
     : fixedPointValue(0)
 {
-   	std::cout << "Default constructor called" << std::endl;
+   	std::cout << "Default constructor called " << std::endl;
 }
 
 
@@ -13,7 +13,7 @@ Fixed::Fixed(const Fixed& other)
 {
 	(void)other;
 	std::cout << "Copy constructor called" << std::endl;
-	this->setRawBits(other.fixedPointValue);
+	this->setRawBits(other.fixedPointValue >> other.fractBits);
 }
 
 // Copy assignment operator
@@ -22,7 +22,7 @@ Fixed& Fixed::operator=(const Fixed& other)
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
     {
-		this->setRawBits(this->getRawBits());
+		this->setRawBits(other.getRawBits());
 	}
 
 	return *this;
@@ -31,11 +31,17 @@ Fixed& Fixed::operator=(const Fixed& other)
 Fixed::Fixed(const int value)
 {
 	(void) value;
+	std::cout << "int constructor called " << value << std::endl;
+
+	this->setRawBits(value << fractBits);
 }
 
 Fixed::Fixed(const float value)
 {
 	(void) value;
+	std::cout << "float constructor called " << value << std::endl;
+
+	this->fixedPointValue = static_cast<int>(roundf(value * (1 << fractBits)));
 }
 
 Fixed::~Fixed(void)
@@ -47,10 +53,11 @@ Fixed::~Fixed(void)
 
 void Fixed::setRawBits(int value)
 {
+	std::cout << "setRawBits member function called" << std::endl;
 	this->fixedPointValue = value;
 };
 
-int Fixed::getRawBits(void)
+int Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
 	return (this->fixedPointValue);
@@ -59,11 +66,20 @@ int Fixed::getRawBits(void)
 // fixed point value to floating point value
 float Fixed::toFloat(void) const
 {
-	return (0.f);
+	//return static_cast<float>(getRawBits()) / (1 << fractBits);
+	return static_cast<float>(fixedPointValue)/ (1 << fractBits);
 }
 
 // fixed point value to int
 int Fixed::toInt(void) const
 {
-	return (0);
+	//int t= Fixed::getRawBits();
+	//return (getRawBits() >> fractBits);
+	return fixedPointValue >> fractBits;
+}
+
+std::ostream& operator<<(std::ostream& os, const Fixed& obj)
+{
+	os << obj.toFloat(); 
+	return os;
 }
