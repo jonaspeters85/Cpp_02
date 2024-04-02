@@ -9,20 +9,21 @@ Fixed::Fixed(void)
 
 
 // Copy constructor
-Fixed::Fixed(const Fixed& other)
+Fixed::Fixed(const Fixed &other)
 {
 	(void)other;
 	std::cout << "Copy constructor called" << std::endl;
-	this->setRawBits(other.fixedPointValue >> other.fractBits);
+	*this = other;
 }
 
 // Copy assignment operator
-Fixed& Fixed::operator=(const Fixed& other)
+Fixed &Fixed::operator=(const Fixed &other)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
     {
-		this->setRawBits(other.getRawBits());
+		fixedPointValue = other.getRawBits();
+		//this->setRawBits(other.getRawBits());
 	}
 
 	return *this;
@@ -31,7 +32,7 @@ Fixed& Fixed::operator=(const Fixed& other)
 Fixed::Fixed(const int value)
 {
 	(void) value;
-	std::cout << "int constructor called " << value << std::endl;
+	std::cout << "Int constructor called " << value << std::endl;
 
 	this->setRawBits(value << fractBits);
 }
@@ -39,7 +40,7 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
 	(void) value;
-	std::cout << "float constructor called " << value << std::endl;
+	std::cout << "Float constructor called " << value << std::endl;
 
 	this->fixedPointValue = static_cast<int>(roundf(value * (1 << fractBits)));
 }
@@ -53,13 +54,13 @@ Fixed::~Fixed(void)
 
 void Fixed::setRawBits(int value)
 {
-	std::cout << "setRawBits member function called" << std::endl;
+	//std::cout << "setRawBits member function called" << std::endl;
 	this->fixedPointValue = value;
 };
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	//std::cout << "getRawBits member function called" << std::endl;
 	return (this->fixedPointValue);
 };
 
