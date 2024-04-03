@@ -202,18 +202,27 @@ Fixed Fixed::operator--(int) 		// post-dec
     return copy;
 }
 
+
 // *********************************
 // *****       Min Max         *****
 // *********************************
 
-
-int Fixed::min(int &a, int &b)
+Fixed &Fixed::min(Fixed &a, Fixed &b)
 {
 	return (a < b ? a : b);
 }
 
-float Fixed::min(const float &a, const float &b)
+const Fixed &Fixed::min(Fixed const &a, Fixed const &b)
 {
 	return (a < b ? a : b);
 }
 
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	return (a > b ? a : b);
+}
+
+const Fixed &Fixed::max(Fixed const &a, Fixed const &b)
+{
+	return (a > b ? a : b);
+}

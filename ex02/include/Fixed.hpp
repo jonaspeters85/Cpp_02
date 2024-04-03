@@ -44,15 +44,16 @@ class Fixed
 
 		// pre-increment and post-increment, pre-decrement and post-decremen 
 		Fixed &operator++(void);			// pre inc
-		Fixed operator++(int value);		// post inc
+		Fixed operator++(int);				// post inc
 
 		Fixed &operator--(void);			// pre dec
-		Fixed operator--(int value);		// post dec
+		Fixed operator--(int);				// post dec
 
 		// min max
-		static int min(int &a, int &b);
-		static float min(const float &a, const float &b);
-
+		static Fixed 			&min(Fixed &a, Fixed &b);
+		static const Fixed		&min(Fixed const &a, Fixed const &b);
+		static Fixed 			&max(Fixed &a, Fixed &b);
+		static const Fixed 		&max(Fixed const &a, Fixed const &b);
 
 
 
