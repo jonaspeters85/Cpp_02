@@ -29,12 +29,12 @@ class Fixed
 
 		// ****** ex03 ******  
 		// 6 comparison operators: >, <, >=, <=, == and !=
-		bool operator>(const Fixed &other);
-		bool operator<(const Fixed &other);
-		bool operator>=(const Fixed &other);
-		bool operator<=(const Fixed &other);
-		bool operator==(const Fixed &other);
-		bool operator!=(const Fixed &other);
+		bool operator>(const Fixed &other) const;
+		bool operator<(const Fixed &other) const;
+		bool operator>=(const Fixed &other) const;
+		bool operator<=(const Fixed &other) const;
+		bool operator==(const Fixed &other) const;
+		bool operator!=(const Fixed &other) const;
 
 		// 4 arithmetic operators: +, -, *, and /.
 		float operator+(const Fixed &other);
