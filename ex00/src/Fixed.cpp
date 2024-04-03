@@ -16,7 +16,8 @@ Fixed::Fixed(const Fixed& other)
 {
 	(void)other;
 	std::cout << "Copy constructor called" << std::endl;
-	this->setRawBits(other.fixedPointValue);
+	//this->setRawBits(other.getRawBits());
+	*this = other;
 }
 
 // Copy assignment operator
@@ -25,7 +26,7 @@ Fixed& Fixed::operator=(const Fixed& other)
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
     {
-		this->setRawBits(this->getRawBits());
+		this->setRawBits(other.getRawBits());
 	}
 
 	return *this;
@@ -37,7 +38,7 @@ void Fixed::setRawBits(int value)
 	this->fixedPointValue = value;
 };
 
-int Fixed::getRawBits(void)
+int Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
 	return (this->fixedPointValue);

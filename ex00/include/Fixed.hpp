@@ -13,8 +13,8 @@ class Fixed
 		static const int fractBits = 8;
 
 	public:		
-		void setRawBits(int value);
-		int getRawBits(void);
+		void setRawBits(int const value);
+		int getRawBits(void) const;
 
     	// Copy constructor
 		Fixed(const Fixed& other);
