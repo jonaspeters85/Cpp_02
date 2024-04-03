@@ -5,12 +5,14 @@
 int main(void)
 {
 	Fixed a(1.24f);
-	Fixed b(1.24f);
+	Fixed b(2.24f);
 	//float tmp = 1.23f;
 
     std::cout << "huhu" << std::endl;
-	std::cout << (--a) << std::endl;
-	std::cout << (a) << std::endl;
+	float aa = 12.3;
+	float bb = 23.4;
+	std::cout << Fixed::min(aa, bb) << std::endl;
+
 
 
 	//Fixed const b(Fixed(5.05f) * Fixed(2));

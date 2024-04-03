@@ -49,6 +49,12 @@ class Fixed
 		Fixed &operator--(void);			// pre dec
 		Fixed operator--(int value);		// post dec
 
+		// min max
+		static int min(int &a, int &b);
+		static float min(const float &a, const float &b);
+
+
+
 
 		//Fixed(const std::string& str); 			// Constructor for std::cout << overloading
 

@@ -201,3 +201,19 @@ Fixed Fixed::operator--(int) 		// post-dec
 	this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
     return copy;
 }
+
+// *********************************
+// *****       Min Max         *****
+// *********************************
+
+
+int Fixed::min(int &a, int &b)
+{
+	return (a < b ? a : b);
+}
+
+float Fixed::min(const float &a, const float &b)
+{
+	return (a < b ? a : b);
+}
+
