@@ -36,7 +36,18 @@ class Fixed
 		bool operator==(const Fixed &other);
 		bool operator!=(const Fixed &other);
 
+		// 4 arithmetic operators: +, -, *, and /.
+		float operator+(const Fixed &other);
+		float operator-(const Fixed &other);
+		float operator*(const Fixed &other);
+		float operator/(const Fixed &other);
 
+		// pre-increment and post-increment, pre-decrement and post-decremen 
+		Fixed &operator++(void);			// pre inc
+		Fixed operator++(int value);		// post inc
+
+		Fixed &operator--(void);			// pre dec
+		Fixed operator--(int value);		// post dec
 
 
 		//Fixed(const std::string& str); 			// Constructor for std::cout << overloading

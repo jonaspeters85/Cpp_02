@@ -75,8 +75,16 @@ int Fixed::toInt(void) const
 	return (this->getRawBits() >> fractBits);
 }
 
-// ++++++++ New Operators +++++++++++
-// 6 comparison operators: >, <, >=, <=, == and !=
+
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++        New Operators        +++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++++
+
+// **********************************************
+// ****       >, <, >=, <=, == and !=        ****
+// **********************************************
+
 bool Fixed::operator>(const Fixed &other) 
 {
     if (this->toFloat() > other.toFloat())
@@ -87,7 +95,7 @@ bool Fixed::operator>(const Fixed &other)
 
 bool Fixed::operator<(const Fixed &other) 
 {
-    if (other.toFloat() < this->toFloat())
+    if (this->toFloat() < other.toFloat())
 		return true;
 	else
 		return false;
@@ -104,9 +112,9 @@ bool Fixed::operator>=(const Fixed &other)
 bool Fixed::operator<=(const Fixed &other) 
 {
     if (this->toFloat() < other.toFloat())
-		return false;
-	else
 		return true;
+	else
+		return false;
 }
 
 bool Fixed::operator==(const Fixed &other) 
@@ -123,4 +131,73 @@ bool Fixed::operator!=(const Fixed &other)
 		return true;
 	else
 		return false;
+}
+
+// **********************************************
+// *****          +, -, *, and /            *****
+// **********************************************
+
+float Fixed::operator+(const Fixed &other) 
+{
+    return (this->toFloat() + other.toFloat());
+}
+
+float Fixed::operator-(const Fixed &other) 
+{
+    return (this->toFloat() - other.toFloat());
+}
+
+float Fixed::operator*(const Fixed &other) 
+{
+    return (this->toFloat() * other.toFloat());
+}
+
+float Fixed::operator/(const Fixed &other) 
+{
+    return (this->toFloat() / other.toFloat());
+}
+
+
+// ********************************************************************************************
+// *****       pre-increment and post-increment, pre-decrement and post-decremen          *****
+// ********************************************************************************************
+
+Fixed &Fixed::operator++(void) 		// pre-inc
+{
+	std::cout << "pre - inc" << std::endl;
+	float tmp = this->toFloat();
+	tmp++;
+	this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
+    return *this;
+}
+
+
+Fixed Fixed::operator++(int) 		// post-inc
+{
+	std::cout << "post - inc" << std::endl;
+    Fixed copy(*this);
+	float tmp = this->toFloat();
+	tmp++;
+	this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
+    return copy;
+}
+
+Fixed &Fixed::operator--(void) 		// pre-dec
+{
+	std::cout << "pre - dec" << std::endl;
+	float tmp = this->toFloat();
+	tmp--;
+	this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
+    return *this;
+}
+
+
+Fixed Fixed::operator--(int) 		// post-dec
+{
+	std::cout << "post - dec" << std::endl;
+    Fixed copy(*this);
+	float tmp = this->toFloat();
+	tmp--;
+	this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
+    return copy;
 }
