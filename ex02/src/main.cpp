@@ -4,7 +4,14 @@
 
 int main(void)
 {
-	Fixed a;
+	Fixed a(1.24f);
+	Fixed b(1.24f);
+	float tmp = 1.23f;
+
+
+
+	//std::cout << (a > b) << std::endl;
+
 	//Fixed const b(Fixed(5.05f) * Fixed(2));
 	// std::cout << a << std::endl;
 	// std::cout << ++a << std::endl;

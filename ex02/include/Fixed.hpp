@@ -27,8 +27,14 @@ class Fixed
     	friend std::ostream& operator<<(std::ostream& os, const Fixed& obj);
 
 
-		// ****** ex03 ******
-		friend std::ostream& operator>(std::ostream& os, const Fixed& obj);
+		// ****** ex03 ******  
+		// 6 comparison operators: >, <, >=, <=, == and !=
+		bool operator>(const Fixed &other);
+		bool operator<(const Fixed &other);
+		bool operator>=(const Fixed &other);
+		bool operator<=(const Fixed &other);
+		bool operator==(const Fixed &other);
+		bool operator!=(const Fixed &other);
 
 
 

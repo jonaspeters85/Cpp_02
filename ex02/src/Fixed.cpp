@@ -76,11 +76,51 @@ int Fixed::toInt(void) const
 }
 
 // ++++++++ New Operators +++++++++++
-std::ostream& operator>(std::ostream& os, const Fixed& obj)
+// 6 comparison operators: >, <, >=, <=, == and !=
+bool Fixed::operator>(const Fixed &other) 
 {
-	(void) obj;
-	std::cout << " HUHU" << std::endl;
-	return os;
-	//os << obj.toFloat(); 
-	//return os;
+    if (this->toFloat() > other.toFloat())
+		return true;
+	else
+		return false;
+}
+
+bool Fixed::operator<(const Fixed &other) 
+{
+    if (other.toFloat() < this->toFloat())
+		return true;
+	else
+		return false;
+}
+
+bool Fixed::operator>=(const Fixed &other) 
+{
+    if (this->toFloat() >= other.toFloat())
+		return true;
+	else
+		return false;
+}
+
+bool Fixed::operator<=(const Fixed &other) 
+{
+    if (this->toFloat() < other.toFloat())
+		return false;
+	else
+		return true;
+}
+
+bool Fixed::operator==(const Fixed &other) 
+{
+    if (this->toFloat() == other.toFloat())
+		return true;
+	else
+		return false;
+}
+
+bool Fixed::operator!=(const Fixed &other) 
+{
+    if (this->toFloat() != other.toFloat())
+		return true;
+	else
+		return false;
 }
