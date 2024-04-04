@@ -137,22 +137,22 @@ bool Fixed::operator!=(const Fixed &other) const
 // *****          +, -, *, and /            *****
 // **********************************************
 
-float Fixed::operator+(const Fixed &other) 
+Fixed Fixed::operator+(const Fixed &other) const
 {
-    return (this->toFloat() + other.toFloat());
+    return Fixed(this->toFloat() + other.toFloat());
 }
 
-float Fixed::operator-(const Fixed &other) 
+Fixed Fixed::operator-(const Fixed &other) const
 {
     return (this->toFloat() - other.toFloat());
 }
 
-float Fixed::operator*(const Fixed &other) 
+Fixed Fixed::operator*(const Fixed &other) const
 {
-    return (this->toFloat() * other.toFloat());
+    return  Fixed(this->toFloat() * other.toFloat());
 }
 
-float Fixed::operator/(const Fixed &other) 
+Fixed Fixed::operator/(const Fixed &other) const
 {
     return (this->toFloat() / other.toFloat());
 }
@@ -164,7 +164,7 @@ float Fixed::operator/(const Fixed &other)
 
 Fixed &Fixed::operator++(void) 		// pre-inc
 {
-	std::cout << "pre - inc" << std::endl;
+	//std::cout << "pre - inc" << std::endl;
 	float tmp = this->toFloat();
 	tmp++;
 	this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
@@ -174,7 +174,7 @@ Fixed &Fixed::operator++(void) 		// pre-inc
 
 Fixed Fixed::operator++(int) 		// post-inc
 {
-	std::cout << "post - inc" << std::endl;
+	//std::cout << "post - inc" << std::endl;
     Fixed copy(*this);
 	float tmp = this->toFloat();
 	tmp++;
@@ -184,7 +184,7 @@ Fixed Fixed::operator++(int) 		// post-inc
 
 Fixed &Fixed::operator--(void) 		// pre-dec
 {
-	std::cout << "pre - dec" << std::endl;
+	//std::cout << "pre - dec" << std::endl;
 	float tmp = this->toFloat();
 	tmp--;
 	this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
@@ -194,7 +194,7 @@ Fixed &Fixed::operator--(void) 		// pre-dec
 
 Fixed Fixed::operator--(int) 		// post-dec
 {
-	std::cout << "post - dec" << std::endl;
+	//std::cout << "post - dec" << std::endl;
     Fixed copy(*this);
 	float tmp = this->toFloat();
 	tmp--;

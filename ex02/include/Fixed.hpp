@@ -37,10 +37,10 @@ class Fixed
 		bool operator!=(const Fixed &other) const;
 
 		// 4 arithmetic operators: +, -, *, and /.
-		float operator+(const Fixed &other);
-		float operator-(const Fixed &other);
-		float operator*(const Fixed &other);
-		float operator/(const Fixed &other);
+		Fixed operator+(const Fixed &other) const;
+		Fixed operator-(const Fixed &other) const;
+		Fixed operator*(const Fixed &other) const;
+		Fixed operator/(const Fixed &other) const;
 
 		// pre-increment and post-increment, pre-decrement and post-decremen 
 		Fixed &operator++(void);			// pre inc
