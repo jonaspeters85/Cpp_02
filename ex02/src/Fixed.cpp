@@ -3,21 +3,21 @@
 Fixed::Fixed(void)
     : fixedPointValue(0)
 {
-   	std::cout << "Default constructor called " << std::endl;
+   	//std::cout << "Default constructor called " << std::endl;
 }
 
 // Copy constructor
 Fixed::Fixed(const Fixed &other)
 {
 	(void)other;
-	std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "Copy constructor called" << std::endl;
 	*this = other;
 }
 
 // Copy assignment operator
 Fixed &Fixed::operator=(const Fixed &other)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	//std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
 		this->setRawBits(other.getRawBits());
 
@@ -27,7 +27,7 @@ Fixed &Fixed::operator=(const Fixed &other)
 Fixed::Fixed(const int value)
 {
 	(void) value;
-	std::cout << "Int constructor called " << value << std::endl;
+	//std::cout << "Int constructor called " << value << std::endl;
 
 	this->setRawBits(value << fractBits);
 }
@@ -35,14 +35,14 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
 	(void) value;
-	std::cout << "Float constructor called " << value << std::endl;
+	//std::cout << "Float constructor called " << value << std::endl;
 
 	this->fixedPointValue = static_cast<int>(roundf(value * (1 << fractBits)));
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	//std::cout << "Destructor called" << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& obj)
@@ -165,41 +165,56 @@ Fixed Fixed::operator/(const Fixed &other) const
 Fixed &Fixed::operator++(void) 		// pre-inc
 {
 	//std::cout << "pre - inc" << std::endl;
-	float tmp = this->toFloat();
-	tmp++;
-	this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
-    return *this;
+	// float tmp = this->toFloat();
+	// tmp++;
+	// this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
+    
+	this->fixedPointValue++;
+	
+	return *this;
 }
 
 
 Fixed Fixed::operator++(int) 		// post-inc
 {
 	//std::cout << "post - inc" << std::endl;
-    Fixed copy(*this);
-	float tmp = this->toFloat();
-	tmp++;
-	this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
-    return copy;
+    // Fixed copy(*this);
+	// float tmp = this->toFloat();
+	// tmp++;
+	// this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
+    
+	Fixed copy(*this);
+	this->fixedPointValue++;
+	
+	return copy;
 }
 
 Fixed &Fixed::operator--(void) 		// pre-dec
 {
 	//std::cout << "pre - dec" << std::endl;
-	float tmp = this->toFloat();
-	tmp--;
-	this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
-    return *this;
+
+	// float tmp = this->toFloat();
+	// tmp--;
+	// this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
+    
+	this->fixedPointValue--;
+	
+	return *this;
 }
 
 
 Fixed Fixed::operator--(int) 		// post-dec
 {
 	//std::cout << "post - dec" << std::endl;
-    Fixed copy(*this);
-	float tmp = this->toFloat();
-	tmp--;
-	this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
-    return copy;
+    // Fixed copy(*this);
+	// float tmp = this->toFloat();
+	// tmp--;
+	// this->fixedPointValue = static_cast<int>(roundf(tmp * (1 << fractBits)));
+    
+	Fixed copy(*this);
+	this->fixedPointValue--;
+	
+	return copy;
 }
 
 
